@@ -22,10 +22,6 @@ Attributes:
                     mu these set the "speed of light" for our simulation
         
     fact (float): The stability factor for the algorithm.
-                  Maxwell's equations are partial differential equations.
-                  This means they represent how variables change as a result
-                  of other variables changing (after a time delta t, the change
-                  in x will be delta x).
                   fact = delta t / 2 * delta z , if it is big that means we are
                   evolving the simulation rapidly through time, if it is small that
                   means we are evolving the simulation slowly through time.
@@ -96,8 +92,8 @@ def update_fields(Ex, By):
     """ The algorithm operates by updating the electric field
     on even time steps and updating the magnetic field on odd time steps
 
-    This reflects how Electric and Magnetic fields respond to eachother in real
-    life and is required for stability of the algorithm
+    This allows for one field to respond to the
+    'newest' iteration of the other field.
 
     Args:
         Ex: array of size (zmax,tmax)
